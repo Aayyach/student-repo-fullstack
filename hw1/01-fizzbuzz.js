@@ -42,7 +42,7 @@ function fizzBuzz(n) {
   }
 
   return arr;
-};
+}
 
 console.log(fizzBuzz(3));
 console.log(fizzBuzz(5));
