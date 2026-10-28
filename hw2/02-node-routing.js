@@ -27,34 +27,27 @@ const server = http.createServer((req, res) => {
     res.write('<h1>Welcome to the Node Routing Exercise Main page</h1>');
     res.end();
   } 
-  
   else if (req.method === 'GET' && req.url === '/redirect') {
-    res.writeHead(302, { Location: 'http://localhost:5001/redirected' } );
-    res.write('<h1>302: Temporarily moved URL</h1>');
+    res.writeHead(302, { Location: '/redirected' } );
     res.end();
   } 
-  
   else if (req.method === 'GET' && req.url === '/redirected') {
     res.writeHead(200, { 'Content-Type': 'text/html' } );
     res.write('<h1>302: Temporarily moved URL</h1>');
     res.end();
   } 
-  
   else if (req.method === 'GET' && req.url === '/cache') {
-    res.setHeader({ 'Cache-Control': 'public, max-age=86400' } );
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('<h1>This resource was cached</h1>');
-    server.cac;
     res.end();
   } 
-  
   else if (req.method === 'GET' && req.url === '/cookie') {
     res.setHeader('Set-Cookie', 'hello=world');
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Cookies... yummm');
     res.end();
   } 
-  
   // all other routes
   else {
     console.log(`${req.method} - ${req.url}`);
