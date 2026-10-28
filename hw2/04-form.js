@@ -43,13 +43,12 @@ app.get('/form', (req, res) => {
 
 // Display form content on /submit route
 app.post('/submit', (req, res) => {
-  res.set({ 'Content-Type': 'text/html' });
-  res.write('<title>Express Form Content</title>');
-  res.write("<h1>Express Form Content</h1>");
-  res.write(`<p>Username: ${req.body.username}</p>`);
-  res.write(`<p>Email: ${req.body.email}</p>`);
-  res.write(`<p>Comments: ${req.body.comms}</p>`);
-  res.write(`<p>Signed up for newsletter: ${req.body.radio}</p>`);
+  res.set({ 'Content-Type': 'text/plain' });
+  res.write('Express Form Content\n\n');
+  res.write(`Username: ${req.body.username}\n`);
+  res.write(`Email: ${req.body.email}\n`);
+  res.write(`Comments: ${req.body.comms}\n`);
+  res.write(`Signed up for newsletter: ${req.body.radio}\n`);
   res.end();
 });
 
