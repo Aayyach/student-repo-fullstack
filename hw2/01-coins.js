@@ -12,14 +12,14 @@
 const calculateChange = function dollarsToCoins(amount) {
   if (amount > 100) {
     return 'Error: the number is too large';
+  } else if (amount <= 0) {
+    return 'Cannot calculate change with invalid amount';
   }
+
   // checks if only dollars were provided
   if (amount % 1 === 0) {
     if (amount > 0) {
       return `${amount} dollars`;
-    }
-    if (amount <= 0) {
-      return 'Cannot calculate change with invalid amount';
     }
   }
 
@@ -92,6 +92,8 @@ console.log(calculateChange(5));
 // Invalid amount
 // $0 ==> Cannot calculate change with invalid amount
 console.log(calculateChange(0));
+// $-1.25 ==> Cannot calculate change with invalid amount
+console.log(calculateChange(-1.25))
 // Amount to make sure all elements can be displayed correct if they exist
 // $1.41 => 1 dollar, 1 quarter, 1 dime, 1 nickel, 1 penny
 console.log(calculateChange(1.41));
