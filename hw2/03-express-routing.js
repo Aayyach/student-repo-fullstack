@@ -35,7 +35,7 @@ app.get('/welcome', (req, res) => {
 
 app.get('/redirect', (req, res) => {
   res.status(302);
-  res.redirect('http://localhost:5001/redirected');
+  res.redirect('/redirected');
 });
 
 app.get('/redirected', (req, res) => {
@@ -52,6 +52,7 @@ app.get('/cache', (req, res) => {
 
 app.get('/cookie', (req, res) => {
   res.status(200);
+  res.set({ 'Content-Type': 'text/plain' });
   res.set({ 'Set-Cookie': 'hello=world' });
   res.send('Cookies... yummm');
 });
