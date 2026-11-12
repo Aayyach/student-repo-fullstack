@@ -17,6 +17,9 @@ app.get('/api/characters', (req, res) => {
 
   fetch(url, {})
     .then((response) => {
+      if (!response.ok) {
+        res.status(500).send(`error: ${response.status}`)
+      }
       return response.json();
     })
     .then((data) => {
@@ -41,6 +44,9 @@ app.get('/api/species', (req, res) => {
 
   fetch(url, {})
     .then((response) => {
+      if (!response.ok) {
+        res.status(500).send(`error: ${response.status}`)
+      }
       return response.json();
     })
     .then((data) => {
@@ -65,6 +71,9 @@ app.get('/api/locations', (req, res) => {
 
   fetch(url, {})
     .then((response) => {
+      if (!response.ok) {
+        res.status(500).send(`error: ${response.status}`)
+      }
       return response.json();
     })
     .then((data) => {
@@ -74,8 +83,9 @@ app.get('/api/locations', (req, res) => {
           location: obj.location,
         });
       });
-      console.log(findLocationCount(locations));
-      res.send(findLocationCount(locations));
+      const locationCount = findLocationCount(locations)
+      console.log(locationCount);
+      res.send(locationCount);
     })
     .catch((error) => console.log('Error: ', error.message));
 });
